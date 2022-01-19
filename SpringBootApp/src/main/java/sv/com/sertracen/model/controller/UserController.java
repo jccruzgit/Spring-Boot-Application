@@ -16,8 +16,8 @@ public class UserController {
 		return "index";
 	}
 	
-	@GetMapping("/userForm")
+	/*@GetMapping("/userForm")
 	public String userForm() {
 		return "user-form";
-	}
+	}*/
 }
