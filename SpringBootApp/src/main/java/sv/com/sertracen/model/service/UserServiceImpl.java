@@ -3,9 +3,16 @@ package sv.com.sertracen.model.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import sv.com.sertracen.model.dto.ChangePasswordForm;
 import sv.com.sertracen.model.entity.User;
+import sv.com.sertracen.model.exception.CustomeFieldValidationException;
+import sv.com.sertracen.model.exception.UsernameOrIdNotFound;
 import sv.com.sertracen.model.repository.UserRepository;
 
 @Service
@@ -32,11 +39,11 @@ public class UserServiceImpl implements UserService{
 
 	private boolean checkPasswordValid(User user) throws Exception {
 		if (user.getConfirmPassword() == null || user.getConfirmPassword().isEmpty()) {
-			//throw new CustomeFieldValidationException("Confirm Password es obligatorio","confirmPassword");
+			throw new CustomeFieldValidationException("Confirm Password es obligatorio","confirmPassword");
 		}
 		
 		if ( !user.getPassword().equals(user.getConfirmPassword())) {
-			//throw new CustomeFieldValidationException("Password y Confirm Password no son iguales","password");
+			throw new CustomeFieldValidationException("Password y Confirm Password no son iguales","password");
 		}
 		return true;
 	}
@@ -141,4 +148,5 @@ public class UserServiceImpl implements UserService{
 		
 		return myUser;
 	}
+
 }

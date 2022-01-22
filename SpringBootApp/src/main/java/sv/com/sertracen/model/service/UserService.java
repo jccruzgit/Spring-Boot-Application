@@ -1,6 +1,8 @@
 package sv.com.sertracen.model.service;
 
+import sv.com.sertracen.model.dto.ChangePasswordForm;
 import sv.com.sertracen.model.entity.User;
+import sv.com.sertracen.model.exception.UsernameOrIdNotFound;
 
 public interface UserService {
 	
@@ -12,8 +14,8 @@ public interface UserService {
 	
 	public User updateUser(User user) throws Exception;
 	
-	/*public void deleteUser(Long id) throws UsernameOrIdNotFound;
+	public void deleteUser(Long id) throws UsernameOrIdNotFound;
 	
-	public User changePassword(ChangePasswordForm form) throws Exception;*/
+	public User changePassword(ChangePasswordForm form) throws Exception;
 
 }
