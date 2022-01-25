@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,7 +20,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
 import sv.com.sertracen.model.dto.ChangePasswordForm;
 import sv.com.sertracen.model.entity.Role;
 import sv.com.sertracen.model.entity.User;
@@ -26,6 +27,7 @@ import sv.com.sertracen.model.exception.CustomeFieldValidationException;
 import sv.com.sertracen.model.exception.UsernameOrIdNotFound;
 import sv.com.sertracen.model.repository.RoleRepository;
 import sv.com.sertracen.model.service.UserService;
+
 
 @Controller
 public class UserController {
@@ -39,7 +41,7 @@ public class UserController {
 	@Autowired
 	RoleRepository roleRepository;
 	
-	@GetMapping({"/","/login"})
+	@GetMapping({"/","/login","/logout"})
 	public String index() {
 		return "index";
 	}
@@ -175,4 +177,5 @@ public class UserController {
 		}
 		return ResponseEntity.ok("Success");
 	}
+	
 }
