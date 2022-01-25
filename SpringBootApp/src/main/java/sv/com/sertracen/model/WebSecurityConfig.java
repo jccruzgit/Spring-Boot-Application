@@ -18,7 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class WebSecurityConfig  extends  WebSecurityConfigurerAdapter{
 
 	String[] resources = new String[]{
-            "/include/**","/css/**","/icons/**","/img/**","/js/**","/layer/**"
+            "/include/**","/css/**","/icons/**","/images/**","/js/**","/layer/**"
     };
 	
 	@Override
@@ -40,7 +40,7 @@ public class WebSecurityConfig  extends  WebSecurityConfigurerAdapter{
             .csrf().disable()
         .logout()
             .permitAll()
-            .logoutSuccessUrl("/login?logout");
+            .logoutSuccessUrl("/index");
     }
 	
 	BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -54,7 +54,7 @@ public class WebSecurityConfig  extends  WebSecurityConfigurerAdapter{
    /*
     UserDetailsService userDetailsService;
     
-    @Autowired
+    @Bean
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception { 
     	//Especificar el encargado del login y encriptacion del password
         auth.userDetailsService(userDetailsService).passwordEncoder(tpasswordEncoder());

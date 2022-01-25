@@ -41,7 +41,7 @@ public class UserController {
 	@Autowired
 	RoleRepository roleRepository;
 	
-	@GetMapping({"/","/login","/logout"})
+	@GetMapping({"/","/login"})
 	public String index() {
 		return "index";
 	}
